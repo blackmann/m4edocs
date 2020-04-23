@@ -3,13 +3,13 @@ Introduction
 
 Payments made with the m4e system is completed using the m4e switch (call it the TSwitch). The TSwitch is responsible for taking a uniform payment form and completing the transaction with a specified payment provider (see :doc:`payment_providers`).
 
-Note on keywords **(payment and transactions)**: Payments is the transfer of money from one wallet to another. Transactions hold the progress (success or failure) of a payment process. Thus transactions are records of payments.
+Note on keywords **(payment and transactions)**: Payments is the transfer of money from one wallet to another. Transactions hold the progress (success or failure) of a payment process. Thus a transaction is a record of payments. A transaction may involve so many payments/movement of money.
 
 The figure below demonstrates a basic overview of payment processing on m4e
 
 .. figure:: _static/m4epayment.jpg
 
-    Figure1: Payment processing overview
+    Figure1: Payment processing from an MTN Momo Wallet to Bank Account wallet
 
 
 Agents
@@ -31,6 +31,35 @@ The client is the agent that initiates the payment process. The m4e system *(or 
 .. code-block:: javascript
 
     {
-        transactionId: "", // uuid 
+        transactionId: "", // uuid
+        from: "", // paying wallet id
+        fromRef: "", // uuid
+        to: "", // receiving wallet id
+        amount: 20.00, 
+        currency: "GHS",
+        meta: {
+            callback: "", // empty or url to updated with transaction
+            purpose: "Pay for electricity bill",
+            data: {}, // custom extra details
+        } 
     }
 
+This form can also be referred as an **Invoice** to be paid by the **from** wallet. The invoice is forwarded to the TSwitch to proceed with the payment process.
+
+
+TSwitch
+^^^^^^^^^
+
+Payments can be made **from** different kind of wallets into **another** kind of wallet which, in some cases, may not belong to the same payment provider. For this reason, the TSwitch intervenes by abstracting the movement of money between wallets of possibly different payment providers.
+
+The mechanism of how the TSwitch works is described in :doc:`tswitch`.
+
+However, the extra process involved in completing the transaction requires the TSwitch to respond to the client instantly with an **in-progress** status.
+
+Upon completion of payment process, the **Signalee** then notifies the client on the final status of the transaction (success or failure).
+
+
+Payment Provider
+^^^^^^^^^^^^^^^^^
+
+Payment providers finalize the payment process. Payments 

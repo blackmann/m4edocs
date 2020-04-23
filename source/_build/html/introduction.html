@@ -1,45 +1,170 @@
 
-<!DOCTYPE html>
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Introduction &#8212; m4e Documentation &amp; wiki  documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; m4e Documentation &amp; wiki  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Payment Providers" href="payment_providers.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="index.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
           
 
-          <div class="body" role="main">
+          
+            <a href="index.html" class="icon icon-home"> m4e Documentation & wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Payments</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agents">Agents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#client">Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tswitch">TSwitch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#payment-provider">Payment Provider</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="payment_providers.html">Payment Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tswitch.html">Payment Switch (TSwitch)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">m4e Documentation & wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>Payments made with the m4e system is completed using the m4e switch (call it the TSwitch). The TSwitch is responsible for taking a uniform payment form and completing the transaction with a specified payment provider (see <a class="reference internal" href="payment_providers.html"><span class="doc">Payment Providers</span></a>).</p>
-<p>Note on keywords <strong>(payment and transactions)</strong>: Payments is the transfer of money from one wallet to another. Transactions hold the progress (success or failure) of a payment process. Thus transactions are records of payments.</p>
+<p>Note on keywords <strong>(payment and transactions)</strong>: Payments is the transfer of money from one wallet to another. Transactions hold the progress (success or failure) of a payment process. Thus a transaction is a record of payments. A transaction may involve so many payments/movement of money.</p>
 <p>The figure below demonstrates a basic overview of payment processing on m4e</p>
 <div class="figure align-default" id="id1">
 <img alt="_images/m4epayment.jpg" src="_images/m4epayment.jpg" />
-<p class="caption"><span class="caption-text">Figure1: Payment processing overview</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Figure1: Payment processing from an MTN Momo Wallet to Bank Account wallet</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="agents">
 <h2>Agents<a class="headerlink" href="#agents" title="Permalink to this headline">¶</a></h2>
@@ -55,85 +180,82 @@
 <p>The client is the agent that initiates the payment process. The m4e system <em>(or specifically the TSwitch)</em> is agnostic of the client. Therefore the client can be an external server, the m4e payment SDK, a POS device, etc. To begin payment process <em>(or create a transaction)</em> the client needs to provide the following form data:</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nx">transactionId</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// uuid</span>
+    <span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// paying wallet id</span>
+    <span class="nx">fromRef</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// uuid</span>
+    <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// receiving wallet id</span>
+    <span class="nx">amount</span><span class="o">:</span> <span class="mf">20.00</span><span class="p">,</span>
+    <span class="nx">currency</span><span class="o">:</span> <span class="s2">&quot;GHS&quot;</span><span class="p">,</span>
+    <span class="nx">meta</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">callback</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// empty or url to updated with transaction</span>
+        <span class="nx">purpose</span><span class="o">:</span> <span class="s2">&quot;Pay for electricity bill&quot;</span><span class="p">,</span>
+        <span class="nx">data</span><span class="o">:</span> <span class="p">{},</span> <span class="c1">// custom extra details</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>This form can also be referred as an <strong>Invoice</strong> to be paid by the <strong>from</strong> wallet. The invoice is forwarded to the TSwitch to proceed with the payment process.</p>
+</div>
+<div class="section" id="tswitch">
+<h3>TSwitch<a class="headerlink" href="#tswitch" title="Permalink to this headline">¶</a></h3>
+<p>Payments can be made <strong>from</strong> different kind of wallets into <strong>another</strong> kind of wallet which, in some cases, may not belong to the same payment provider. For this reason, the TSwitch intervenes by abstracting the movement of money between wallets of possibly different payment providers.</p>
+<p>The mechanism of how the TSwitch works is described in <a class="reference internal" href="tswitch.html"><span class="doc">Payment Switch (TSwitch)</span></a>.</p>
+<p>However, the extra process involved in completing the transaction requires the TSwitch to respond to the client instantly with an <strong>in-progress</strong> status.</p>
+<p>Upon completion of payment process, the <strong>Signalee</strong> then notifies the client on the final status of the transaction (success or failure).</p>
+</div>
+<div class="section" id="payment-provider">
+<h3>Payment Provider<a class="headerlink" href="#payment-provider" title="Permalink to this headline">¶</a></h3>
+<p>Payment providers finalize the payment process. Payments</p>
 </div>
 </div>
 </div>
 
 
+           </div>
+           
           </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">m4e Documentation & wiki</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Payments</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#agents">Agents</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="payment_providers.html">Payment Providers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tswitch.html">Payment Switch (TSwitch)</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">&lt;no title&gt;</a></li>
-      <li>Next: <a href="payment_providers.html" title="next chapter">Payment Providers</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="payment_providers.html" class="btn btn-neutral float-right" title="Payment Providers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+  
 
+  <hr/>
 
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Etuka, De-Great, Chris
 
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-
-
-
+</footer>
 
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2020, Etuka, De-Great, Chris.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/introduction.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
     
-  </body>
+   
+
+</body>
 </html>
