@@ -1,0 +1,8 @@
+.. toctree::
+    :maxdepth: 2
+    :caption: Payments
+
+    introduction
+    payment_providers
+    tswitch
+

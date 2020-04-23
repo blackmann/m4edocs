@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Introduction &#8212; m4e Documentation &amp; wiki  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Payment Providers" href="payment_providers.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Payments made with the m4e system is completed using the m4e switch (call it the TSwitch). The TSwitch is responsible for taking a uniform payment form and completing the transaction with a specified payment provider (see <a class="reference internal" href="payment_providers.html"><span class="doc">Payment Providers</span></a>).</p>
+<p>Note on keywords <strong>(payment and transactions)</strong>: Payments is the transfer of money from one wallet to another. Transactions hold the progress (success or failure) of a payment process. Thus transactions are records of payments.</p>
+<p>The figure below demonstrates a basic overview of payment processing on m4e</p>
+<div class="figure align-default" id="id1">
+<img alt="_images/m4epayment.jpg" src="_images/m4epayment.jpg" />
+<p class="caption"><span class="caption-text">Figure1: Payment processing overview</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="agents">
+<h2>Agents<a class="headerlink" href="#agents" title="Permalink to this headline">¶</a></h2>
+<p>From the figure above we can derive the following agents involved in a payment transaction.</p>
+<ul class="simple">
+<li><p>Client</p></li>
+<li><p>Payment Switch (TSwitch)</p></li>
+<li><p>Payment Provider</p></li>
+<li><p>Signalee</p></li>
+</ul>
+<div class="section" id="client">
+<h3>Client<a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h3>
+<p>The client is the agent that initiates the payment process. The m4e system <em>(or specifically the TSwitch)</em> is agnostic of the client. Therefore the client can be an external server, the m4e payment SDK, a POS device, etc. To begin payment process <em>(or create a transaction)</em> the client needs to provide the following form data:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">transactionId</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// uuid</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">m4e Documentation & wiki</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Payments</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agents">Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="payment_providers.html">Payment Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tswitch.html">Payment Switch (TSwitch)</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">&lt;no title&gt;</a></li>
+      <li>Next: <a href="payment_providers.html" title="next chapter">Payment Providers</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Etuka, De-Great, Chris.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/introduction.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
