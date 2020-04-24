@@ -32,9 +32,15 @@ The client is the agent that initiates the payment process. The m4e system *(or 
 
     {
         transactionId: "", // uuid
-        from: "", // paying wallet id
+        from: {
+            type: "m4e",
+            id: "ae890-19800-b87a0"
+        },
         fromRef: "", // uuid
-        to: "", // receiving wallet id
+        to: {
+            type: "mtn",
+            id: "02447812093"
+        }, 
         amount: 20.00, 
         currency: "GHS",
         meta: {
@@ -44,7 +50,7 @@ The client is the agent that initiates the payment process. The m4e system *(or 
         } 
     }
 
-This form can also be referred as an **Invoice** to be paid by the **from** wallet. The invoice is forwarded to the TSwitch to proceed with the payment process.
+This form can also be referred as an :doc:`Invoice </invoice>`  to be paid by the **from** wallet. The invoice is forwarded to the TSwitch to proceed with the payment process.
 
 
 TSwitch
