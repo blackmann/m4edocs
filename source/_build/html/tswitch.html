@@ -83,7 +83,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="payment_providers.html">Payment Providers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Payment Switch (TSwitch)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Payment Switch (TSwitch)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#movement-of-money-between-wallets-of-the-same-payment-provider">Movement of money between wallets of the same payment provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#movement-of-money-between-wallets-of-different-payment-providers">Movement of money between wallets of different payment providers</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -150,6 +154,49 @@
             
   <div class="section" id="payment-switch-tswitch">
 <h1>Payment Switch (TSwitch)<a class="headerlink" href="#payment-switch-tswitch" title="Permalink to this headline">¶</a></h1>
+<p>Payments can be made <strong>from</strong> different kind of wallets into <strong>another</strong> kind of wallet which, in some cases, may not belong to the same payment provider. For this reason, the TSwitch intervenes by abstracting the movement of money between wallets of possibly different payment providers.</p>
+<p>The switch has references to internal (merchant) accounts/wallets for each payment provider supported. The reason for this will be seen the following sections.</p>
+<div class="section" id="movement-of-money-between-wallets-of-the-same-payment-provider">
+<h2>Movement of money between wallets of the same payment provider<a class="headerlink" href="#movement-of-money-between-wallets-of-the-same-payment-provider" title="Permalink to this headline">¶</a></h2>
+<p>This is a simpler form of a transaction. When making a payment of <strong>GHS 60.00</strong> from <code class="docutils literal notranslate"><span class="pre">Wallet</span> <span class="pre">A:</span> <span class="pre">Provider</span> <span class="pre">X</span></code> to <code class="docutils literal notranslate"><span class="pre">Wallet</span> <span class="pre">B:</span> <span class="pre">Provider</span> <span class="pre">X</span></code>, the switch undergoes the following steps:</p>
+<ol class="arabic simple">
+<li><p>Initiates a payment of GHS 60.00 from <code class="docutils literal notranslate"><span class="pre">Wallet</span> <span class="pre">A</span></code> into <code class="docutils literal notranslate"><span class="pre">Merchant</span> <span class="pre">Wallet:</span> <span class="pre">Provider</span> <span class="pre">X</span></code>.</p></li>
+<li><p>Upon success, the switch then initiates a payment of GHS 60 from <code class="docutils literal notranslate"><span class="pre">Merchant</span> <span class="pre">Wallet:</span> <span class="pre">Provider</span> <span class="pre">X</span></code> into <code class="docutils literal notranslate"><span class="pre">Wallet</span> <span class="pre">B:</span> <span class="pre">Provider</span> <span class="pre">X</span></code>.</p></li>
+</ol>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span> <span class="n">ProviderX</span> <span class="n">providerX</span><span class="p">;</span>
+
+<span class="kd">final</span> <span class="n">MerchantWallet</span><span class="o">&lt;</span><span class="n">ProviderX</span><span class="o">&gt;</span> <span class="n">merchantWallet</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="c1">// Send money from [a] to [b]</span>
+<span class="kt">void</span> <span class="nf">send</span><span class="p">(</span><span class="n">Wallet</span> <span class="n">a</span><span class="p">,</span> <span class="n">Wallet</span> <span class="n">b</span><span class="p">,</span> <span class="kt">double</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">provider</span> <span class="o">==</span> <span class="n">b</span><span class="p">.</span><span class="na">provider</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// step 1</span>
+        <span class="kd">final</span> <span class="n">paymentForm</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&quot;from&quot;</span><span class="p">:</span> <span class="n">a</span><span class="p">.</span><span class="na">id</span><span class="p">,</span>
+            <span class="s">&quot;to&quot;</span><span class="p">:</span> <span class="n">merchantWallet</span><span class="p">.</span><span class="na">id</span><span class="p">,</span>
+            <span class="s">&quot;amount&quot;</span><span class="p">:</span> <span class="n">amount</span>
+        <span class="p">}</span>
+
+        <span class="n">providerX</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">paymentForm</span><span class="p">);</span>
+
+        <span class="c1">// step 2 (demonstration purposes)</span>
+        <span class="c1">// technically, the payment call does not respond</span>
+        <span class="c1">// immediately. Therefore, the following instruction</span>
+        <span class="c1">// will be completed on a separate thread</span>
+
+        <span class="c1">// upon success</span>
+
+        <span class="n">send</span><span class="p">(</span><span class="n">merchantWallet</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="movement-of-money-between-wallets-of-different-payment-providers">
+<h2>Movement of money between wallets of different payment providers<a class="headerlink" href="#movement-of-money-between-wallets-of-different-payment-providers" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 

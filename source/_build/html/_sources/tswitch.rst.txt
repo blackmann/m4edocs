@@ -1,2 +1,51 @@
 Payment Switch (TSwitch)
 *************************
+
+Payments can be made **from** different kind of wallets into **another** kind of wallet which, in some cases, may not belong to the same payment provider. For this reason, the TSwitch intervenes by abstracting the movement of money between wallets of possibly different payment providers.
+
+The switch has references to internal (merchant) accounts/wallets for each payment provider supported. The reason for this will be seen the following sections.
+
+Movement of money between wallets of the same payment provider
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is a simpler form of a transaction. When making a payment of **GHS 60.00** from ``Wallet A: Provider X`` to ``Wallet B: Provider X``, the switch undergoes the following steps:
+
+1. Initiates a payment of GHS 60.00 from ``Wallet A`` into ``Merchant Wallet: Provider X``. 
+
+2. Upon success, the switch then initiates a payment of GHS 60 from ``Merchant Wallet: Provider X`` into ``Wallet B: Provider X``.
+
+.. code-block:: java
+
+    final ProviderX providerX;
+
+    final MerchantWallet<ProviderX> merchantWallet;
+
+    ...
+
+    // Send money from [a] to [b]
+    void send(Wallet a, Wallet b, double amount) {
+        if (a.provider == b.provider) {
+            // step 1
+            final paymentForm = {
+                "from": a.id,
+                "to": merchantWallet.id,
+                "amount": amount
+            }
+
+            providerX.send(paymentForm);
+
+            // step 2 (demonstration purposes)
+            // technically, the payment call does not respond 
+            // immediately. Therefore, the following instruction
+            // will be completed on a separate thread
+
+            // upon success
+
+            send(merchantWallet, b);
+        }
+    }
+
+
+Movement of money between wallets of different payment providers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+

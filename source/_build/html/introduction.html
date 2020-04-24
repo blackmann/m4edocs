@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Payment Providers" href="payment_providers.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="index.html" /> 
+    <link rel="prev" title="M4E Documentation &amp; Wiki" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,6 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#client">Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tswitch">TSwitch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#payment-provider">Payment Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#signalee-post-processor">Signalee (Post-Processor)</a></li>
 </ul>
 </li>
 </ul>
@@ -204,7 +205,30 @@
 </div>
 <div class="section" id="payment-provider">
 <h3>Payment Provider<a class="headerlink" href="#payment-provider" title="Permalink to this headline">¶</a></h3>
-<p>Payment providers finalize the payment process. Payments</p>
+<p>Payment providers simply handle incoming and outgoing of payments. Provider abstractions implement the interface below.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// PaymentForm is a generic form class that specifies fields required for</span>
+<span class="c1">// a particular payment channel/method</span>
+<span class="kd">interface</span> <span class="nc">PaymentInterface</span><span class="o">&lt;</span><span class="n">PaymentForm</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="kt">void</span> <span class="nf">sendMoney</span><span class="p">(</span><span class="n">PaymentForm</span> <span class="n">form</span><span class="p">);</span>
+
+    <span class="c1">// this method is called when the external payment channel makes</span>
+    <span class="c1">// a callback with the status of the transaction.</span>
+    <span class="c1">//</span>
+    <span class="c1">// A call to transaction.proceed(status) is the next move.</span>
+    <span class="kt">void</span> <span class="nf">onPaymentStatusUpdate</span><span class="p">(</span><span class="n">String</span> <span class="n">transactionId</span><span class="p">,</span> <span class="n">Object</span> <span class="n">status</span><span class="p">);</span>
+
+    <span class="kt">void</span> <span class="nf">checkPaymentStatus</span><span class="p">(</span><span class="n">String</span> <span class="n">transactionId</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="signalee-post-processor">
+<h3>Signalee (Post-Processor)<a class="headerlink" href="#signalee-post-processor" title="Permalink to this headline">¶</a></h3>
+<p>The signalee uses the idea of database signals (in <a class="reference external" href="https://docs.djangoproject.com/en/3.0/topics/signals/">Django</a>) or entity listeners (in <a class="reference external" href="https://docs.jboss.org/hibernate/orm/4.0/hem/en-US/html/listeners.html">Hibernate</a>). That is the Signalee (or say, <cite>S</cite>) listens to persistence events on a transaction and performs additional operations around the transaction.</p>
+<p>A prominent use-case with the <cite>S</cite> is to notify the client either by push notification, email, sms or callback URL.</p>
+<p>Note: The Signalee should not be confused with an agent that notifies (or signals) clients. The signalee is rather signaled by record persistence which then performs any other kind of additional effects besides just notifying clients.</p>
 </div>
 </div>
 </div>
@@ -220,7 +244,7 @@
         <a href="payment_providers.html" class="btn btn-neutral float-right" title="Payment Providers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="M4E Documentation &amp; Wiki" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

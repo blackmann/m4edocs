@@ -73,7 +73,9 @@ Payment providers simply handle incoming and outgoing of payments. Provider abst
         void sendMoney(PaymentForm form);
 
         // this method is called when the external payment channel makes 
-        // a callback with the status of the transaction
+        // a callback with the status of the transaction.
+        //
+        // A call to transaction.proceed(status) is the next move.
         void onPaymentStatusUpdate(String transactionId, Object status);
 
         void checkPaymentStatus(String transactionId);

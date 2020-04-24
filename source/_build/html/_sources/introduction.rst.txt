@@ -62,4 +62,35 @@ Upon completion of payment process, the **Signalee** then notifies the client on
 Payment Provider
 ^^^^^^^^^^^^^^^^^
 
-Payment providers finalize the payment process. Payments 
+Payment providers simply handle incoming and outgoing of payments. Provider abstractions implement the interface below.
+
+.. code-block:: java
+
+    // PaymentForm is a generic form class that specifies fields required for
+    // a particular payment channel/method
+    interface PaymentInterface<PaymentForm> {
+
+        void sendMoney(PaymentForm form);
+
+        // this method is called when the external payment channel makes 
+        // a callback with the status of the transaction.
+        //
+        // A call to transaction.proceed(status) is the next move.
+        void onPaymentStatusUpdate(String transactionId, Object status);
+
+        void checkPaymentStatus(String transactionId);
+
+    }
+
+
+
+
+Signalee (Post-Processor)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The signalee uses the idea of database signals (in `Django <https://docs.djangoproject.com/en/3.0/topics/signals/>`_) or entity listeners (in `Hibernate <https://docs.jboss.org/hibernate/orm/4.0/hem/en-US/html/listeners.html>`_). That is the Signalee (or say, `S`) listens to persistence events on a transaction and performs additional operations around the transaction.
+
+A prominent use-case with the `S` is to notify the client either by push notification, email, sms or callback URL.
+
+Note: The Signalee should not be confused with an agent that notifies (or signals) clients. The signalee is rather signaled by record persistence which then performs any other kind of additional effects besides just notifying clients.
+ 
