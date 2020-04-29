@@ -1,7 +1,7 @@
 Introduction
 *****************
 
-Payments made with the m4e system is completed using the m4e switch (call it the TSwitch). The TSwitch is responsible for taking a uniform payment form and completing the transaction with a specified payment provider (see :doc:`payment_providers`).
+Payments made with the m4e system is completed using the m4e switch (call it the Broker). The Broker is responsible for taking a uniform payment form and completing the transaction with a specified payment provider (see :doc:`payment_providers`).
 
 Note on keywords **(payment and transactions)**: Payments is the transfer of money from one wallet to another. Transactions hold the progress (success or failure) of a payment process. Thus a transaction is a record of payments. A transaction may involve so many payments/movement of money.
 
@@ -18,14 +18,14 @@ Agents
 From the figure above we can derive the following agents involved in a payment transaction.
 
 * Client
-* Payment Switch (TSwitch)
+* Payment Switch (Broker)
 * Payment Provider
 * Signalee
 
 
 Client
 ^^^^^^^^^^
-The client is the agent that initiates the payment process. The m4e system *(or specifically the TSwitch)* is agnostic of the client. Therefore the client can be an external server, the m4e payment SDK, a POS device, etc. To begin payment process *(or create a transaction)* the client needs to provide the following form data:
+The client is the agent that initiates the payment process. The m4e system *(or specifically the Broker)* is agnostic of the client. Therefore the client can be an external server, the m4e payment SDK, a POS device, etc. To begin payment process *(or create a transaction)* the client needs to provide the following form data:
 
 
 .. code-block:: javascript
@@ -50,17 +50,17 @@ The client is the agent that initiates the payment process. The m4e system *(or 
         } 
     }
 
-This form can also be referred as an :doc:`Invoice </invoice>`  to be paid by the **from** wallet. The invoice is forwarded to the TSwitch to proceed with the payment process.
+This form can also be referred as an :doc:`Invoice </invoice>`  to be paid by the **from** wallet. The invoice is forwarded to the Broker to proceed with the payment process.
 
 
-TSwitch
+Broker
 ^^^^^^^^^
 
-Payments can be made **from** different kind of wallets into **another** kind of wallet which, in some cases, may not belong to the same payment provider. For this reason, the TSwitch intervenes by abstracting the movement of money between wallets of possibly different payment providers.
+Payments can be made **from** different kind of wallets into **another** kind of wallet which, in some cases, may not belong to the same payment provider. For this reason, the Broker intervenes by abstracting the movement of money between wallets of possibly different payment providers.
 
-The mechanism of how the TSwitch works is described in :doc:`tswitch`.
+The mechanism of how the Broker works is described in :doc:`broker`.
 
-However, the extra process involved in completing the transaction requires the TSwitch to respond to the client instantly with an **in-progress** status.
+However, the extra process involved in completing the transaction requires the Broker to respond to the client instantly with an **in-progress** status.
 
 Upon completion of payment process, the **Signalee** then notifies the client on the final status of the transaction (success or failure).
 

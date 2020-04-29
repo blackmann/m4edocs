@@ -1,7 +1,7 @@
-Payment Switch (TSwitch)
+Payment Switch (Broker)
 *************************
 
-Payments can be made **from** different kind of wallets into **another** kind of wallet which, in some cases, may not belong to the same payment provider. For this reason, the TSwitch intervenes by abstracting the movement of money between wallets of possibly different payment providers.
+Payments can be made **from** different kind of wallets into **another** kind of wallet which, in some cases, may not belong to the same payment provider. For this reason, the Broker intervenes by abstracting the movement of money between wallets of possibly different payment providers.
 
 The switch has references to internal (merchant) accounts/wallets for each payment provider supported. The reason for this will be seen the following sections.
 
@@ -62,7 +62,7 @@ From both scenarios above, firstly money is moved from the senders wallet into m
 
 .. code-block:: java
 
-    class Switch {
+    class Broker {
 
         final Map<Provider, Wallet> walletGraph;
 

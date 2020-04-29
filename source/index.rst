@@ -7,6 +7,6 @@ M4E Documentation & Wiki
 
     introduction
     payment_providers
-    tswitch
+    broker
     invoice
 
