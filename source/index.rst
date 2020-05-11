@@ -9,4 +9,5 @@ M4E Documentation & Wiki
     payment_providers
     broker
     invoice
+    third_party
 
